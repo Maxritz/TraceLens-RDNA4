@@ -377,10 +377,14 @@ class OrigamiHelper:
             "mi325": "gfx942",
             "mi350": "gfx950",
             "mi355": "gfx950",
+            "rx9070": "gfx1201",
+            "rx9060": "gfx1201",
+            "9070": "gfx1201",
+            "9060": "gfx1201",
         }
         arch_name = name_to_arch.get(arch_name, arch_name)
 
-        # The origami python bindings only support the 3xx series
+        # The origami python bindings support gfx942, gfx950, and gfx1201
         arch_to_props = {
             # Architecture strings
             "gfx942": {
@@ -394,6 +398,12 @@ class OrigamiHelper:
                 "N_CU": 256,
                 "lds_capacity": 64 * 1024,  # 64 KB
                 "L2_capacity": 4 * 1024 * 1024,  # 4 MB
+            },
+            "gfx1201": {
+                "arch": origami.architecture_t.gfx1201,
+                "N_CU": 80,  # RDNA4 RX 9070 series
+                "lds_capacity": 128 * 1024,  # 128 KB
+                "L2_capacity": 8 * 1024 * 1024,  # 8 MB
             },
         }
 
